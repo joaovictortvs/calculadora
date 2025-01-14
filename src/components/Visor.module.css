@@ -1,0 +1,17 @@
+.visor{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    top: 10px;
+    width: 90%;
+    height: 60px;
+    font-size: 2em;
+    background-color: rgb(77, 159, 77);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.visor p{
+    margin-right: 10px;
+}

@@ -1,0 +1,36 @@
+.buttons{
+    align-self: start;
+    margin: 10px 0px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.buttonRows{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.buttonRows button{
+    border-radius: 5px;
+    font-size: 1.5em;
+    margin: 5px;
+    height: 90px;
+    width: 90px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btnFunction{
+    border: none;
+    color: white;
+    background-color: red;
+}
+
+.btnEqual{
+    border: none;
+    color: white;
+    background-color: blue;
+    width: 190px !important;
+}
