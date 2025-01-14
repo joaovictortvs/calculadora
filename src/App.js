@@ -1,3 +1,4 @@
+import styles from './App.css'
 import Container from "./components/Container";
 
 function App() {
