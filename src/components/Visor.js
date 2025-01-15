@@ -1,10 +1,10 @@
 import styles from './Visor.module.css'
 
-function Visor({valor}){
+function Visor({valor, calculando}){
 
     return(
         <div className={styles.visor}>
-            <p>{valor}</p>
+            <p>{valor || calculando}</p>
         </div>
     )
 

@@ -14,7 +14,7 @@ function Buttons({onButtonClick}){
                 <button onClick={()=> onButtonClick('6')}>6</button>
                 <button onClick={()=> onButtonClick('5')}>5</button>
                 <button onClick={()=> onButtonClick('4')}>4</button>
-                <button className={styles.btnFunction} onClick={()=> onButtonClick('*')}>X</button>
+                <button className={styles.btnFunction} onClick={()=> onButtonClick('x')}>X</button>
             </div> 
             <div className={styles.buttonRows}>
                 <button onClick={()=> onButtonClick('2')}>2</button>

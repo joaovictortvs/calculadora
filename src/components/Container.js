@@ -5,14 +5,25 @@ import Buttons from './Buttons'
 
 function Container(){
     const [display, setDisplay] = useState('')
-    const [result, setResult] = useState(null)
+    const [result, setResult] = useState('0')
 
-   // criar função para calcular, usei o chatgpt pra me guiar, até pq estou iniciando no react
+   function Calcular(valor){
+        if(valor === "="){
+            const evalResult = eval(display)
+            setResult(evalResult.toString())
+            setDisplay('')
+        } else if(valor === "CE"){
+            setDisplay('')
+            setResult('0')
+        } else{
+           setDisplay(prevDisplay => prevDisplay + valor)
+        }
+   }
 
     return(
         <div className={styles.calculadora}>
-            <Visor valor={result !== null ? result : '0'}/>
-            <Buttons onButtonClick={handleButtonClick}/>
+            <Visor valor={result !== '0' ? result : '0'} calculando={display}/>
+            <Buttons onButtonClick={Calcular}/>
         </div>
     )
 }
