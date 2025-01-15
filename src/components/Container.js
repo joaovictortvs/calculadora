@@ -4,26 +4,32 @@ import Visor from './Visor'
 import Buttons from './Buttons'
 
 function Container(){
-    const [display, setDisplay] = useState('')
-    const [result, setResult] = useState('0')
+    const [display, setDisplay] = useState('0')
+    const [result, setResult] = useState(null)
 
-   function Calcular(valor){
-        if(valor === "="){
-            const evalResult = eval(display)
-            setResult(evalResult.toString())
-            setDisplay('')
-        } else if(valor === "CE"){
-            setDisplay('')
-            setResult('0')
+   function AddVisor(valor){
+        if(display === '0'){
+            setDisplay(valor)
         } else{
-           setDisplay(prevDisplay => prevDisplay + valor)
+            setDisplay(prevDisplay=> prevDisplay + valor)
+        }
+   }
+
+   function Calcular(operador){
+        if(operador === "="){
+            setResult(eval(display))
+        } else if(operador === "CE"){
+            setDisplay('0')
+            setResult(null)
+        } else{
+            setDisplay(valor=> valor + operador)
         }
    }
 
     return(
         <div className={styles.calculadora}>
-            <Visor valor={result !== '0' ? result : '0'} calculando={display}/>
-            <Buttons onButtonClick={Calcular}/>
+            <Visor valor={result !== null ? result : display}/>
+            <Buttons NumeroClick={AddVisor} Operacao={Calcular}/>
         </div>
     )
 }
