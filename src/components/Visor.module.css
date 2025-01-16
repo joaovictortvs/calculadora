@@ -11,7 +11,7 @@
     background-color: rgb(77, 159, 77);
     border-radius: 10px;
     margin-bottom: 10px;
-    z-index: 0;
+    z-index: 1;
 }
 
 .visor p{
