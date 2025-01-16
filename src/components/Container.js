@@ -1,12 +1,16 @@
 import styles from './Container.module.css'
+
 import {useState} from 'react'
+
 import Visor from './Visor'
 import Buttons from './Buttons'
+import MsgErro from './MsgErro'
 
 function Container(){
     const [display, setDisplay] = useState('0')
     const [result, setResult] = useState(null)
     const [stateOperador, setStateOperador] = useState(false)
+    const [erroOperador, setErroOperador] = useState(false)
 
 
    function AddVisor(valor){
@@ -15,9 +19,14 @@ function Container(){
         } else{
             setDisplay(prevDisplay=> prevDisplay + valor)
         }
+
         if(stateOperador){
             setStateOperador(false)
         }
+   }
+
+   function erroEntendido(){
+        setErroOperador(false)
    }
 
    function Calcular(operador){
@@ -29,18 +38,29 @@ function Container(){
             setDisplay('0')
             setResult(null)
             setStateOperador(false)
-        } else {
+        } else{
             if(stateOperador){
-                alert('Não é possível adicionar dois operadores.')
+                setErroOperador(true)
                 return
             }
-            setStateOperador(true)
-            setDisplay(valor=> valor + operador)
-        } 
+
+            if(result !== null){
+                setDisplay(result + operador)
+                setStateOperador(true)
+                setResult(null)
+            } else{
+                setErroOperador(false)
+                setStateOperador(true)
+                setDisplay(valor=> valor + operador)
+            }
+        }
    }
 
     return(
         <div className={styles.calculadora}>
+            {erroOperador && (
+                <MsgErro clickBtn={erroEntendido}/>
+            )}
             <Visor valor={result !== null ? result : display}/>
             <Buttons NumeroClick={AddVisor} Operacao={Calcular}/>
         </div>
